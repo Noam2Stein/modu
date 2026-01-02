@@ -1,0 +1,16 @@
+[package]
+name = "modu"
+description = "A modular game engine written in Rust"
+version = { workspace = true }
+edition = { workspace = true }
+license = { workspace = true }
+repository = { workspace = true }
+
+[workspace]
+members = [".", "examples/sandbox"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+repository = "https://github.com/noam2stein/modu"
