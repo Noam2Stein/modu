@@ -6,8 +6,13 @@ version = 4
 name = "modu"
 version = "0.1.0"
 dependencies = [
+ "modu_ecs",
  "modu_math",
 ]
+
+[[package]]
+name = "modu_ecs"
+version = "0.1.0"
 
 [[package]]
 name = "modu_math"
