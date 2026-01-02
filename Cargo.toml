@@ -6,11 +6,20 @@ edition = { workspace = true }
 license = { workspace = true }
 repository = { workspace = true }
 
+[features]
+math = ["dep:modu_math"]
+
+[dependencies]
+modu_math = { workspace = true, optional = true }
+
 [workspace]
-members = [".", "examples/sandbox"]
+members = [".", "modules/modu_math", "examples/sandbox"]
 
 [workspace.package]
 version = "0.1.0"
 edition = "2024"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/noam2stein/modu"
+
+[workspace.dependencies]
+modu_math = { path = "modules/modu_math" }

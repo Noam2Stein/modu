@@ -5,6 +5,13 @@ version = 4
 [[package]]
 name = "modu"
 version = "0.1.0"
+dependencies = [
+ "modu_math",
+]
+
+[[package]]
+name = "modu_math"
+version = "0.1.0"
 
 [[package]]
 name = "sandbox"
