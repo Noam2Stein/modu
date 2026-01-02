@@ -1,9 +1,10 @@
 [package]
-name = "sandbox"
+name = "modu_ecs"
+description = "An entity component system for the Modu game engine"
 version = { workspace = true }
 edition = { workspace = true }
 license = { workspace = true }
 repository = { workspace = true }
 
 [dependencies]
-modu = { path = "../../", features = ["ecs", "math"] }
+modu_ecs_proc_macros = { workspace = true }
