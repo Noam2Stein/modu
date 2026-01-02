@@ -15,7 +15,13 @@ modu_ecs = { workspace = true, optional = true }
 modu_math = { workspace = true, optional = true }
 
 [workspace]
-members = [".", "modules/modu_math", "examples/sandbox"]
+members = [
+    ".",
+    "modules/modu_ecs",
+    "modules/modu_ecs/proc_macros",
+    "modules/modu_math",
+    "examples/sandbox",
+]
 
 [workspace.package]
 version = "0.1.0"
@@ -25,4 +31,9 @@ repository = "https://github.com/noam2stein/modu"
 
 [workspace.dependencies]
 modu_ecs = { path = "modules/modu_ecs" }
+modu_ecs_proc_macros = { path = "modules/modu_ecs/proc_macros" }
 modu_math = { path = "modules/modu_math" }
+
+proc-macro2 = "1.0.104"
+quote = "1.0.42"
+venial = "0.6.1"
