@@ -1,7 +1,0 @@
-[package]
-name = "modu_math"
-description = "A math library for the Modu game engine"
-version = { workspace = true }
-edition = { workspace = true }
-license = { workspace = true }
-repository = { workspace = true }

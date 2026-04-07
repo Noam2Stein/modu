@@ -1,39 +1,47 @@
 [package]
 name = "modu"
-description = "A modular game engine written in Rust"
 version = { workspace = true }
+authors = { workspace = true }
+categories = { workspace = true }
 edition = { workspace = true }
+keywords = { workspace = true }
 license = { workspace = true }
-repository = { workspace = true }
+description = "A modular game engine"
 
 [features]
-ecs = ["dep:modu_ecs"]
+gpu = ["dep:modu_gpu", "modu_window?/modu_gpu"]
 math = ["dep:modu_math"]
+window = ["dep:modu_window"]
 
 [dependencies]
-modu_ecs = { workspace = true, optional = true }
+modu_gpu = { workspace = true, optional = true }
 modu_math = { workspace = true, optional = true }
+modu_window = { workspace = true, optional = true }
 
 [workspace]
 members = [
     ".",
-    "modules/modu_ecs",
-    "modules/modu_ecs/proc_macros",
-    "modules/modu_math",
-    "examples/sandbox",
+    "crates/modu_gpu",
+    "crates/modu_math",
+    "crates/modu_window",
+    "sandbox",
 ]
 
 [workspace.package]
 version = "0.1.0"
+authors = ["Noam Stein <noamsteindev@proton.me>"]
+categories = ["game-engines"]
 edition = "2024"
+keywords = ["gamedev", "game-engine"]
 license = "MIT OR Apache-2.0"
-repository = "https://github.com/noam2stein/modu"
 
 [workspace.dependencies]
-modu_ecs = { path = "modules/modu_ecs" }
-modu_ecs_proc_macros = { path = "modules/modu_ecs/proc_macros" }
-modu_math = { path = "modules/modu_math" }
+modu = { path = "." }
+modu_gpu = { path = "crates/modu_gpu" }
+modu_math = { path = "crates/modu_math" }
+modu_window = { path = "crates/modu_window" }
 
-proc-macro2 = "1.0.104"
-quote = "1.0.42"
-venial = "0.6.1"
+ggmath = "0.16.6"
+pollster = "0.4.0"
+wgpu = "29.0.1"
+winit = "0.30.13"
