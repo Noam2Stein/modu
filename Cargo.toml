@@ -8,17 +8,25 @@ license.workspace = true
 description = "A modular game engine"
 
 [features]
-gpu = ["dep:modu_gpu", "modu_window?/modu_gpu"]
+app = ["dep:modu_app", "gpu", "window"]
+gpu = ["dep:modu_gpu"]
 math = ["dep:modu_math"]
 window = ["dep:modu_window"]
 
 [dependencies]
+modu_app = { workspace = true, optional = true }
 modu_gpu = { workspace = true, optional = true }
 modu_math = { workspace = true, optional = true }
 modu_window = { workspace = true, optional = true }
 
 [workspace]
-members = [".", "crates/modu_gpu", "crates/modu_math", "crates/modu_window"]
+members = [
+    ".",
+    "crates/modu_app",
+    "crates/modu_gpu",
+    "crates/modu_math",
+    "crates/modu_window",
+]
 
 [workspace.package]
 version = "0.1.0"
@@ -27,6 +35,7 @@ license = "MIT OR Apache-2.0"
 
 [workspace.dependencies]
 modu = { path = "." }
+modu_app = { path = "crates/modu_app" }
 modu_gpu = { path = "crates/modu_gpu" }
 modu_math = { path = "crates/modu_math" }
 modu_window = { path = "crates/modu_window" }

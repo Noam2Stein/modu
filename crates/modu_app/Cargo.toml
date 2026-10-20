@@ -1,0 +1,11 @@
+[package]
+name = "modu_app"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+modu_gpu.workspace = true
+modu_window.workspace = true
+
+pollster.workspace = true

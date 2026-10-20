@@ -4,15 +4,21 @@ use modu_gpu::{
     CurrentSurfaceTexture, Device, DeviceDescriptor, Instance, Queue, RequestAdapterOptions,
     Surface, SurfaceConfiguration, TextureView, TextureViewDescriptor,
 };
-use pollster::block_on;
-use winit::{
-    application::ApplicationHandler,
-    event::{DeviceEvent, DeviceId, WindowEvent},
-    event_loop::{ActiveEventLoop, EventLoop},
-    window::{Window, WindowAttributes, WindowId},
+use modu_window::{
+    ActiveEventLoop, ApplicationHandler, DeviceEvent, DeviceId, EventLoop, Window,
+    WindowAttributes, WindowEvent, WindowId,
 };
+use pollster::block_on;
 
 pub trait App: Sized {
+    fn run() {
+        let event_loop = EventLoop::new().expect("failed to create event loop");
+        let mut app_runner = AppRunner::<Self>::Uninitialized;
+        event_loop
+            .run_app(&mut app_runner)
+            .expect("failed to run app");
+    }
+
     fn window_attributes() -> WindowAttributes {
         Window::default_attributes()
     }
@@ -67,17 +73,6 @@ pub enum AppEvent {
     Resumed,
     Suspended,
     MemoryWarning,
-}
-
-pub fn run_app<T>()
-where
-    T: App,
-{
-    let event_loop = EventLoop::new().expect("failed to create event loop");
-    let mut app_runner = AppRunner::<T>::Uninitialized;
-    event_loop
-        .run_app(&mut app_runner)
-        .expect("failed to run app");
 }
 
 enum AppRunner<T>
@@ -220,7 +215,7 @@ where
                     &output,
                 );
 
-                surface_texture.present();
+                queue.present(surface_texture);
                 if reconfigure_surface {
                     surface.configure(device, surface_config);
                 }

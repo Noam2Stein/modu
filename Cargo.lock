@@ -754,9 +754,19 @@ dependencies = [
 name = "modu"
 version = "0.1.0"
 dependencies = [
+ "modu_app",
  "modu_gpu",
  "modu_math",
  "modu_window",
+]
+
+[[package]]
+name = "modu_app"
+version = "0.1.0"
+dependencies = [
+ "modu_gpu",
+ "modu_window",
+ "pollster",
 ]
 
 [[package]]
@@ -777,8 +787,6 @@ dependencies = [
 name = "modu_window"
 version = "0.1.0"
 dependencies = [
- "modu_gpu",
- "pollster",
  "winit",
 ]
 
