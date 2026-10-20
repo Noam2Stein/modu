@@ -1,3 +1,8 @@
+#[cfg(feature = "app")]
+pub mod app {
+    pub use modu_app::*;
+}
+
 #[cfg(feature = "gpu")]
 pub mod gpu {
     pub use modu_gpu::*;
