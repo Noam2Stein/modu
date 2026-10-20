@@ -1,11 +1,10 @@
 [package]
 name = "modu"
-version = { workspace = true }
-authors = { workspace = true }
-categories = { workspace = true }
-edition = { workspace = true }
-keywords = { workspace = true }
-license = { workspace = true }
+version.workspace = true
+categories = ["game-engines"]
+edition.workspace = true
+keywords = ["gamedev", "game-engine"]
+license.workspace = true
 description = "A modular game engine"
 
 [features]
@@ -23,10 +22,7 @@ members = [".", "crates/modu_gpu", "crates/modu_math", "crates/modu_window"]
 
 [workspace.package]
 version = "0.1.0"
-authors = ["Noam Stein <noamsteindev@proton.me>"]
-categories = ["game-engines"]
 edition = "2024"
-keywords = ["gamedev", "game-engine"]
 license = "MIT OR Apache-2.0"
 
 [workspace.dependencies]

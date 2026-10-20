@@ -1,9 +1,8 @@
 [package]
 name = "modu_window"
-version = { workspace = true }
-authors = { workspace = true }
-edition = { workspace = true }
-license = { workspace = true }
+version.workspace = true
+edition.workspace = true
+license.workspace = true
 
 [features]
 modu_gpu = ["dep:modu_gpu", "dep:pollster"]
@@ -12,4 +11,4 @@ modu_gpu = ["dep:modu_gpu", "dep:pollster"]
 modu_gpu = { workspace = true, optional = true }
 
 pollster = { workspace = true, optional = true }
-winit = { workspace = true }
+winit.workspace = true
