@@ -1,19 +1,17 @@
+//! A modular game engine.
+
 #[cfg(feature = "app")]
-pub mod app {
-    pub use modu_app::*;
-}
+#[doc(inline)]
+pub use modu_app as app;
 
 #[cfg(feature = "gpu")]
-pub mod gpu {
-    pub use modu_gpu::*;
-}
+#[doc(inline)]
+pub use modu_gpu as gpu;
 
 #[cfg(feature = "math")]
-pub mod math {
-    pub use modu_math::*;
-}
+#[doc(inline)]
+pub use modu_math as math;
 
 #[cfg(feature = "window")]
-pub mod window {
-    pub use modu_window::*;
-}
+#[doc(inline)]
+pub use modu_window as window;
