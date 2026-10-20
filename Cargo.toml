@@ -31,7 +31,7 @@ modu_gpu = { path = "crates/modu_gpu" }
 modu_math = { path = "crates/modu_math" }
 modu_window = { path = "crates/modu_window" }
 
-ggmath = "0.16.6"
-pollster = "0.4.0"
-wgpu = "29.0.1"
+ggmath = "0.18.2"
+pollster = "1.0.1"
+wgpu = "30.0.1"
 winit = "0.30.13"
