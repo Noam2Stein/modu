@@ -19,13 +19,7 @@ modu_math = { workspace = true, optional = true }
 modu_window = { workspace = true, optional = true }
 
 [workspace]
-members = [
-    ".",
-    "crates/modu_gpu",
-    "crates/modu_math",
-    "crates/modu_window",
-    "sandbox",
-]
+members = [".", "crates/modu_gpu", "crates/modu_math", "crates/modu_window"]
 
 [workspace.package]
 version = "0.1.0"
