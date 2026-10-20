@@ -764,6 +764,7 @@ dependencies = [
  "modu_app",
  "modu_gpu",
  "modu_math",
+ "modu_render",
  "modu_window",
 ]
 
@@ -788,6 +789,14 @@ name = "modu_math"
 version = "0.1.0"
 dependencies = [
  "ggmath",
+]
+
+[[package]]
+name = "modu_render"
+version = "0.1.0"
+dependencies = [
+ "modu_gpu",
+ "modu_math",
 ]
 
 [[package]]

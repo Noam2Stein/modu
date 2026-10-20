@@ -12,6 +12,10 @@ pub use modu_gpu as gpu;
 #[doc(inline)]
 pub use modu_math as math;
 
+#[cfg(feature = "render")]
+#[doc(inline)]
+pub use modu_render as render;
+
 #[cfg(feature = "window")]
 #[doc(inline)]
 pub use modu_window as window;

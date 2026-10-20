@@ -12,12 +12,14 @@ description = "A modular game engine"
 app = ["dep:modu_app", "gpu", "window"]
 gpu = ["dep:modu_gpu"]
 math = ["dep:modu_math"]
+render = ["dep:modu_render", "gpu", "math"]
 window = ["dep:modu_window"]
 
 [dependencies]
 modu_app = { workspace = true, optional = true }
 modu_gpu = { workspace = true, optional = true }
 modu_math = { workspace = true, optional = true }
+modu_render = { workspace = true, optional = true }
 modu_window = { workspace = true, optional = true }
 
 [workspace]
@@ -26,6 +28,7 @@ members = [
     "crates/modu_app",
     "crates/modu_gpu",
     "crates/modu_math",
+    "crates/modu_render",
     "crates/modu_window",
     "examples/empty_app",
     "examples/pong",
@@ -41,6 +44,7 @@ modu = { path = "." }
 modu_app = { path = "crates/modu_app" }
 modu_gpu = { path = "crates/modu_gpu" }
 modu_math = { path = "crates/modu_math" }
+modu_render = { path = "crates/modu_render" }
 modu_window = { path = "crates/modu_window" }
 
 ggmath = "0.18.2"
