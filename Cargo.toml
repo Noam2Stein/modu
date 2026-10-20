@@ -1,6 +1,7 @@
 [package]
 name = "modu"
 version.workspace = true
+autoexamples = false
 categories = ["game-engines"]
 edition.workspace = true
 keywords = ["gamedev", "game-engine"]
@@ -26,6 +27,8 @@ members = [
     "crates/modu_gpu",
     "crates/modu_math",
     "crates/modu_window",
+    "examples/empty_app",
+    "examples/pong",
 ]
 
 [workspace.package]

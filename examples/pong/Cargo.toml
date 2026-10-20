@@ -1,0 +1,6 @@
+[package]
+name = "pong"
+edition.workspace = true
+
+[dependencies]
+modu = { workspace = true, features = ["app"] }
