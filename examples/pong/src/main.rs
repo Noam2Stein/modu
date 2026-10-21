@@ -9,11 +9,11 @@ fn main() {
 struct Game {}
 
 impl App for Game {
-    fn config(config: &mut modu::app::AppConfig) {
+    fn configure(config: &mut modu::app::AppConfig) {
         config.window_attributes.title = "Pong".to_string();
     }
 
-    fn init(_ctx: &modu::app::AppContext) -> Self {
+    fn initialize(_ctx: &modu::app::AppContext) -> Self {
         Self {}
     }
 }

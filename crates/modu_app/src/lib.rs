@@ -19,11 +19,11 @@ pub trait App: Sized {
             .expect("failed to run app");
     }
 
-    fn config(config: &mut AppConfig) {
+    fn configure(config: &mut AppConfig) {
         let _ = config;
     }
 
-    fn init(ctx: &AppContext) -> Self;
+    fn initialize(ctx: &AppContext) -> Self;
 
     fn event(&mut self, ctx: &AppContext, event: &AppEvent) {
         if let AppEvent::WindowEvent {
@@ -127,7 +127,7 @@ where
         let mut config = AppConfig {
             window_attributes: WindowAttributes::default(),
         };
-        T::config(&mut config);
+        T::configure(&mut config);
 
         config.window_attributes = config.window_attributes.with_visible(false);
         let window = Arc::new(
@@ -137,21 +137,21 @@ where
         );
 
         let instance = Instance::default();
+        let surface = instance
+            .create_surface(window.clone())
+            .expect("failed to create surface");
         let adapter = block_on(instance.request_adapter(&RequestAdapterOptions::default()))
             .expect("failed to get adapter");
         let (device, queue) = block_on(adapter.request_device(&DeviceDescriptor::default()))
             .expect("failed to get device");
 
-        let surface = instance
-            .create_surface(window.clone())
-            .expect("failed to create surface");
         let window_inner_size = window.inner_size();
         let mut surface_config = surface
             .get_default_config(&adapter, window_inner_size.width, window_inner_size.height)
             .expect("surface is not supported by adapter");
         surface.configure(&device, &surface_config);
 
-        let app = T::init(&AppContext {
+        let app = T::initialize(&AppContext {
             event_loop,
             window: &window,
             device: &device,

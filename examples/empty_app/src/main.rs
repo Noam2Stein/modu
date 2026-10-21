@@ -7,7 +7,7 @@ fn main() {
 struct EmptyApp;
 
 impl App for EmptyApp {
-    fn init(_ctx: &modu::app::AppContext) -> Self {
+    fn initialize(_ctx: &modu::app::AppContext) -> Self {
         Self
     }
 }
