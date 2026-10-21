@@ -19,11 +19,11 @@ pub trait App: Sized {
             .expect("failed to run app");
     }
 
-    fn window_attributes() -> WindowAttributes {
-        Window::default_attributes()
+    fn config(config: &mut AppConfig) {
+        let _ = config;
     }
 
-    fn new(ctx: &AppContext) -> Self;
+    fn init(ctx: &AppContext) -> Self;
 
     fn event(&mut self, ctx: &AppContext, event: &AppEvent) {
         if let AppEvent::WindowEvent {
@@ -46,6 +46,12 @@ pub trait App: Sized {
     fn exit(self, ctx: &AppContext) {
         let _ = ctx;
     }
+}
+
+#[non_exhaustive]
+#[derive(Debug)]
+pub struct AppConfig {
+    pub window_attributes: WindowAttributes,
 }
 
 #[non_exhaustive]
@@ -118,10 +124,15 @@ where
             return;
         }
 
-        let window_attributes = T::window_attributes().with_visible(false);
+        let mut config = AppConfig {
+            window_attributes: WindowAttributes::default(),
+        };
+        T::config(&mut config);
+
+        config.window_attributes = config.window_attributes.with_visible(false);
         let window = Arc::new(
             event_loop
-                .create_window(window_attributes)
+                .create_window(config.window_attributes)
                 .expect("failed to create window"),
         );
 
@@ -140,7 +151,7 @@ where
             .expect("surface is not supported by adapter");
         surface.configure(&device, &surface_config);
 
-        let app = T::new(&AppContext {
+        let app = T::init(&AppContext {
             event_loop,
             window: &window,
             device: &device,
